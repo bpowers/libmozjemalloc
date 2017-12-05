@@ -12,7 +12,7 @@ PREFIX = /usr
 
 ARCH             = x86_64
 
-LIB_SRCS         = mozjemalloc.cpp mozmemory_wrap.cpp
+LIB_SRCS         = src/mozjemalloc.cpp src/mozmemory_wrap.cpp
 LIB_OBJS         = $(addprefix build/,$(LIB_SRCS:.cpp=.o))
 LIB              = libmozjemalloc.so
 
@@ -56,14 +56,12 @@ format:
 endif
 
 clean:
-	rm -f src/test/fork-example
-	rm -f $(UNIT_BIN) $(BENCH_BIN) $(LIB)
+	rm -f $(LIB)
 	find . -name '*~' -print0 | xargs -0 rm -f
 	rm -rf build
 
 
 distclean: clean
-	rm -rf $(GFLAGS_BUILD_DIR)
 
 # double $$ in egrep pattern is because we're embedding this shell command in a Makefile
 TAGS:
