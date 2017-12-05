@@ -35,6 +35,7 @@ all: $(LIB)
 build:
 	mkdir -p build
 	mkdir -p $(basename $(ALL_OBJS))
+	touch -c build
 
 
 build/%.o: %.cpp build $(CONFIG)
@@ -48,8 +49,6 @@ $(LIB): $(LIB_OBJS) $(CONFIG)
 install: $(LIB)
 	install -c -m 0755 $(LIB) $(PREFIX)/lib/$(LIB)
 	ldconfig
-	mkdir -p $(PREFIX)/include/plasma
-#	install -c -m 0755 src/plasma/mesh.h $(PREFIX)/include/plasma/mesh.h
 
 format:
 	clang-format -i src/*.cc src/*.h
@@ -73,4 +72,4 @@ TAGS:
 
 -include $(ALL_OBJS:.o=.d)
 
-.PHONY: all clean distclean format test test_frag check install paper run TAGS
+.PHONY: all clean distclean format install paper run TAGS
