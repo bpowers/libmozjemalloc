@@ -28,7 +28,7 @@ if c.optimize_build:
 else:
     c.append('cflags', '-O0')
 
-c.append('cflags', '-DSANITIZER_GO=0')
+c.append('cflags', '-DMOZ_MEMORY=1')
 
 c.append('cflags', '-fPIC')
 c.append('cflags', '-pipe')
@@ -70,7 +70,7 @@ c.append('ldflags', '-ftls-model=initial-exec')
 c.append('libs', '-lm -lpthread')
 c.append('libs', '-ldl')
 
-c.append('cxxflags', '-std=gnu++14 -I src')
+c.append('cxxflags', '-std=gnu++14 -I .')
 c.append('cxxflags', '$(CFLAGS)')
 
 # for development work, clang has much, much nicer error messages

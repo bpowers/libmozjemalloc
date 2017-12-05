@@ -12,7 +12,7 @@ PREFIX = /usr
 
 ARCH             = x86_64
 
-LIB_SRCS         = libmozjemalloc.cpp
+LIB_SRCS         = mozjemalloc.cpp mozmemory_wrap.cpp
 LIB_OBJS         = $(addprefix build/,$(LIB_SRCS:.cpp=.o))
 LIB              = libmozjemalloc.so
 
